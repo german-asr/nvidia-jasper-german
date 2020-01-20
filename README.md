@@ -6,6 +6,22 @@ Code was adapted from [https://github.com/NVIDIA/DeepLearningExamples/tree/maste
 To get training data follow instructions in [https://github.com/ynop/megs](https://github.com/ynop/megs).
 Download the LM from [https://github.com/ynop/german-asr-lm](https://github.com/ynop/german-asr-lm).
 
+## Run
+Build docker image
+```
+scripts/docker/build.sh
+```
+
+Launch docker
+```
+scripts/docker/launch.sh
+```
+
+Start training
+```
+scripts/train.sh
+```
+
 ## Results
 
 ### Best Path
