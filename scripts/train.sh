@@ -18,7 +18,7 @@ echo "Container nvidia build = " $NVIDIA_BUILD_ID
 
 
 DATA_DIR=${1:-"/datasets/jasperized"}
-MODEL_CONFIG=${2:-"/code/configs/a_ger_letter_jasper3x5_sp_offline_specaugment.toml"}
+MODEL_CONFIG=${2:-"/code/configs/ger_10x5_sp_offline_specaugment.toml"}
 RESULT_DIR=${3:-"/results"}
 CHECKPOINT=${4:-"none"}
 CREATE_LOGFILE=${5:-"true"}
@@ -67,9 +67,9 @@ CMD+=" --model_toml=$MODEL_CONFIG"
 CMD+=" --lr=$LEARNING_RATE"
 CMD+=" --seed=$SEED"
 CMD+=" --optimizer=novograd"
-CMD+=" --dataset_dir=$DATA_DIR/commonvoice_de"
-CMD+=" --val_manifest=$DATA_DIR/commonvoice_de/dev.json,$DATA_DIR/tuda/dev_Kinect-RAW.json"
-CMD+=" --train_manifest=$DATA_DIR/commonvoice_de/train.json,$DATA_DIR/tuda/train_Kinect-RAW.json,$DATA_DIR/swc/all.json,$DATA_DIR/mailabs/all.json,$DATA_DIR/voxforge_de/all.json"
+CMD+=" --dataset_dir=$DATA_DIR"
+CMD+=" --val_manifest=$DATA_DIR/full_jasperized/dev.json"
+CMD+=" --train_manifest=$DATA_DIR/full_jasperized/train.json"
 CMD+=" --weight_decay=1e-3"
 CMD+=" --save_freq=10"
 CMD+=" --eval_freq=100"
