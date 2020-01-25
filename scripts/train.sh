@@ -20,7 +20,7 @@ echo "Container nvidia build = " $NVIDIA_BUILD_ID
 DATA_DIR=${1:-"/datasets"}
 MODEL_CONFIG=${2:-"configs/jasper10x5dr_sp_offline_specaugment.toml"}
 RESULT_DIR=${3:-"/results"}
-CHECKPOINT=${4:-"none"}
+CHECKPOINT=${4:-"/results/DistributedDataParallel_1579986187.9417398-epoch-2.pt"}
 CREATE_LOGFILE=${5:-"true"}
 CUDNN_BENCHMARK=${6:-"true"}
 NUM_GPUS=${7:-2}
@@ -28,7 +28,7 @@ PRECISION=${8:-"fp16"}
 EPOCHS=${9:-400}
 SEED=${10:-6}
 BATCH_SIZE=${11:-64}
-LEARNING_RATE=${12:-"0.007"}
+LEARNING_RATE=${12:-"0.009"}
 GRADIENT_ACCUMULATION_STEPS=${13:-1}
 LAUNCH_OPT=${LAUNCH_OPT:-"none"}
 
@@ -71,7 +71,7 @@ CMD+=" --dataset_dir=$DATA_DIR"
 CMD+=" --val_manifest=$DATA_DIR/full_jasperized/dev.json"
 CMD+=" --train_manifest=$DATA_DIR/full_jasperized/train.json"
 CMD+=" --weight_decay=1e-3"
-CMD+=" --save_freq=10"
+CMD+=" --save_freq=2"
 CMD+=" --eval_freq=100"
 CMD+=" --train_freq=25"
 CMD+=" --lr_decay"
