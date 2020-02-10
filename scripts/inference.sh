@@ -17,18 +17,18 @@
 echo "Container nvidia build = " $NVIDIA_BUILD_ID
 
 
-DATA_DIR=${1-"/datasets/LibriSpeech"}
-DATASET=${2:-"dev-clean"}
+DATA_DIR=${1:-"/cluster/home/buec/repos/german-asr-data2/data"}
+DATASET=${2:-"test"}
 MODEL_CONFIG=${3:-"configs/jasper10x5dr_sp_offline_specaugment.toml"}
-RESULT_DIR=${4:-"/results"}
-CHECKPOINT=${5:-"/checkpoints/jasper_fp16.pt"}
+RESULT_DIR=${4:-"exp/10x5_ep100/results"}
+CHECKPOINT=${5:-"exp/10x5_ep100/results/DistributedDataParallel_1580851050.301322-epoch-100.pt"}
 CREATE_LOGFILE=${6:-"true"}
 CUDNN_BENCHMARK=${7:-"false"}
 PRECISION=${8:-"fp32"}
 NUM_STEPS=${9:-"-1"}
 SEED=${10:-0}
-BATCH_SIZE=${11:-64}
-MODELOUTPUT_FILE=${12:-"none"}
+BATCH_SIZE=${11:-16}
+MODELOUTPUT_FILE=${12:-"$RESULT_DIR/${DATASET}.logits"}
 PREDICTION_FILE=${13:-"$RESULT_DIR/${DATASET}.predictions"}
 
 if [ "$CREATE_LOGFILE" = "true" ] ; then
@@ -80,7 +80,7 @@ fi
 CMD=" python inference.py "
 CMD+=" --batch_size $BATCH_SIZE "
 CMD+=" --dataset_dir $DATA_DIR "
-CMD+=" --val_manifest $DATA_DIR/librispeech-${DATASET}-wav.json "
+CMD+=" --val_manifest $DATA_DIR/full_jasperized/${DATASET}.json"
 CMD+=" --model_toml $MODEL_CONFIG  "
 CMD+=" --seed $SEED "
 CMD+=" --ckpt $CHECKPOINT "
