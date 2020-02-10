@@ -28,7 +28,7 @@ scripts/train.sh
 ```
 
 ## Results
-Word error rates in %.
+Word error rates in %, for [megs](https://github.com/german-asr/megs) v2.
 
 | Decoding                | Training-Data | dev_cv | test_cv | dev_tuda | test_tuda |
 | ----------------------- | ------------- | ------ | ------- | -------- | --------- |
