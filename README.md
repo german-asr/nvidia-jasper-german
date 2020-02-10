@@ -30,6 +30,11 @@ scripts/train.sh
 ## Results
 Word error rates in %, for [megs](https://github.com/german-asr/megs) v2.
 
+| Decoding                | Training-Data | dev | test |
+| ----------------------- | ------------- | ------ | ----- |
+| Best Path               | train         | 17.91  | 19.16 |
+| Beam Search (6-gram LM) | train         | 12.97  | 14.14 |
+
 | Decoding                | Training-Data | dev_cv | test_cv | dev_tuda | test_tuda |
 | ----------------------- | ------------- | ------ | ------- | -------- | --------- |
 | Best Path               | train         | 23.95  | 28.65 | 18.13 | 18.86 |
